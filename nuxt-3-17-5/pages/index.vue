@@ -1,17 +1,22 @@
 <template>
     <!-- <NuxtLayout name="keep"> -->
-        <div>
-            <ul>
-                <li v-for="(item, key) in list" :key="key">
+    <div>
+        <ul>
+            <li v-for="(item, key) in list" :key="key">
+                <template v-if="item.length > 0">
                     <p>{{ key }}</p>
                     <ul>
                         <li v-for="subItem in item" :key="subItem">
                             <NuxtLink :to="`/${key}/${subItem}`">{{ subItem }}</NuxtLink>
                         </li>
                     </ul>
-                </li>
-            </ul>
-        </div>
+                </template>
+                <template v-else-if="key">
+                    <NuxtLink :to="`/${key}`">{{ key }}</NuxtLink>
+                </template>
+            </li>
+        </ul>
+    </div>
     <!-- </NuxtLayout> -->
 </template>
 
@@ -19,8 +24,10 @@
 import { useRouter } from 'vue-router'
 
 definePageMeta({
-  layout: 'keep',
+    layout: 'default',
 })
+
+useLifeCycleLog()
 
 const router = useRouter()
 
@@ -28,6 +35,7 @@ const router = useRouter()
 
 const list = computed(() => {
     const paths = router.getRoutes().map(item => item.path)
+    console.log('paths', paths.length)
     // 我的路由是 /a/b /a/c 的格式，我需要处理成 { [a]: [b, c]} 的格式
     let obj: Record<string, string[]> = {}
     paths.forEach(item => {
@@ -39,6 +47,9 @@ const list = computed(() => {
             } else {
                 obj[two] = [rest.join('/')]
             }
+        } else if(two) {
+            // console.log('paths2', 'first: ' + first, 'two:' + two, 'rest:' + rest)
+            obj[two] = []
         }
     })
     return obj

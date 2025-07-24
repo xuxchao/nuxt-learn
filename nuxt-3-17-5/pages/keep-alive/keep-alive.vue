@@ -7,16 +7,11 @@
 <script setup lang="ts">
 
 definePageMeta({
-  layout: 'keep',
+  layout: 'default',
 })
 
-onMounted(() => {
-    console.log('keep-alive 页面挂载')
-})
+useLifeCycleLog()
 
-onUnmounted(() => {
-    console.log('keep-alive 页面卸载')
-})
 </script>
 
 <style scoped>

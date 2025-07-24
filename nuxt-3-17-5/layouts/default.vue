@@ -5,3 +5,10 @@
     </div>
 </template>
 
+<script setup lang="ts">
+const route = useRoute()
+
+const name = computed(() => {
+    return route.name
+})
+</script>

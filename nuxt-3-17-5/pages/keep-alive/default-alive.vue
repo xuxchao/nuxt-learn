@@ -4,13 +4,8 @@
 
 <script setup lang="ts">
 
-onMounted(() => {
-    console.log('default-alive 页面挂载')
-})
+useLifeCycleLog()
 
-onUnmounted(() => {
-    console.log('default-alive 页面卸载')
-})
 </script>
 
 <style scoped>
