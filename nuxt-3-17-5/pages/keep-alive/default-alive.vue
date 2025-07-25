@@ -6,21 +6,8 @@
 
 <script setup lang="ts">
 
-definePageMeta({
-    layout: 'default',
-})
+useLifeCycleLog()
 
-defineOptions({
-    name: 'keep-alive-default-alive'
-})
-
-onMounted(() => {
-    console.log('default-alive 页面挂载')
-})
-
-onUnmounted(() => {
-    console.log('default-alive 页面卸载')
-})
 </script>
 
 <style scoped></style>
