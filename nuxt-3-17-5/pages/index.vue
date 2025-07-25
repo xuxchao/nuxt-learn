@@ -1,5 +1,4 @@
 <template>
-    <!-- <NuxtLayout name="keep"> -->
         <div>
             <ul>
                 <li v-for="(item, key) in list" :key="key">
@@ -12,14 +11,13 @@
                 </li>
             </ul>
         </div>
-    <!-- </NuxtLayout> -->
 </template>
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 
 definePageMeta({
-  layout: 'keep',
+  layout: 'default',
 })
 
 const router = useRouter()
@@ -28,7 +26,6 @@ const router = useRouter()
 
 const list = computed(() => {
     const paths = router.getRoutes().map(item => item.path)
-    // 我的路由是 /a/b /a/c 的格式，我需要处理成 { [a]: [b, c]} 的格式
     let obj: Record<string, string[]> = {}
     paths.forEach(item => {
         const paths = item.split('/')
@@ -42,6 +39,14 @@ const list = computed(() => {
         }
     })
     return obj
+})
+
+onMounted(() => {
+    console.log('index 页面挂载')
+})
+
+onUnmounted(() => {
+    console.log('index 页面卸载')
 })
 
 </script>
