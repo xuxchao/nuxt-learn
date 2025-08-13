@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anime.js 触摸滚动模拟</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入anime.js -->
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3B82F6",
+              secondary: "#10B981",
+              dark: "#1E293B",
+              light: "#F8FAFC",
+            },
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .scroll-content {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scrollContainer" class="overflow-hidden min-h-screen">
+      <!-- 可滚动内容容器 -->
+      <!-- 实际滚动内容 -->
+      <div id="scrollContent" class="scroll-content bg-light">
+        <!-- 头部 -->
+        <div class="bg-primary text-white p-5 relative">
+          <h2 class="text-xl font-bold">探索页面</h2>
+          <p class="text-sm opacity-90 mt-1">向上滑动查看更多内容</p>
+        </div>
+
+        <!-- 内容区域 -->
+        <div class="p-4">
+          <!-- 卡片1 -->
+          <div
+            class="bg-white rounded-xl shadow-md p-4 mb-4 transform transition hover:shadow-lg"
+          >
+            <img
+              src="https://picsum.photos/300/200?random=1"
+              alt="风景图片1"
+              class="w-full h-48 object-cover rounded-lg mb-3"
+            />
+            <h3 class="font-bold text-lg">自然风光</h3>
+            <p class="text-gray-600 text-sm">
+              探索大自然的美丽景色，感受大自然的魅力与力量。
+            </p>
+          </div>
+
+          <!-- 卡片2 -->
+          <div
+            class="bg-white rounded-xl shadow-md p-4 mb-4 transform transition hover:shadow-lg"
+          >
+            <img
+              src="https://picsum.photos/300/200?random=2"
+              alt="城市建筑图片"
+              class="w-full h-48 object-cover rounded-lg mb-3"
+            />
+            <h3 class="font-bold text-lg">城市建筑</h3>
+            <p class="text-gray-600 text-sm">
+              现代都市的建筑风格，展现人类文明的进步与创造力。
+            </p>
+          </div>
+
+          <!-- 卡片3 -->
+          <div
+            class="bg-white rounded-xl shadow-md p-4 mb-4 transform transition hover:shadow-lg"
+          >
+            <img
+              src="https://picsum.photos/300/200?random=3"
+              alt="海洋生物图片"
+              class="w-full h-48 object-cover rounded-lg mb-3"
+            />
+            <h3 class="font-bold text-lg">海洋世界</h3>
+            <p class="text-gray-600 text-sm">
+              神秘的海底世界，蕴藏着无数未知的生物与秘密。
+            </p>
+          </div>
+
+          <!-- 卡片4 -->
+          <div
+            class="bg-white rounded-xl shadow-md p-4 mb-4 transform transition hover:shadow-lg"
+          >
+            <img
+              src="https://picsum.photos/300/200?random=4"
+              alt="山脉图片"
+              class="w-full h-48 object-cover rounded-lg mb-3"
+            />
+            <h3 class="font-bold text-lg">壮丽山脉</h3>
+            <p class="text-gray-600 text-sm">
+              高耸入云的山脉，见证着地球亿万年的变迁。
+            </p>
+          </div>
+
+          <!-- 卡片5 -->
+          <div
+            class="bg-white rounded-xl shadow-md p-4 mb-4 transform transition hover:shadow-lg"
+          >
+            <img
+              src="https://picsum.photos/300/200?random=5"
+              alt="森林图片"
+              class="w-full h-48 object-cover rounded-lg mb-3"
+            />
+            <h3 class="font-bold text-lg">茂密森林</h3>
+            <p class="text-gray-600 text-sm">
+              郁郁葱葱的森林，是地球上最重要的生态系统之一。
+            </p>
+          </div>
+        </div>
+
+        <!-- 底部 -->
+        <div class="bg-dark text-white p-4 text-center text-sm">
+          <p>已经到底啦！</p>
+        </div>
+      </div>
+    </div>
+    <script>
+      // 等待DOM加载完成
+      document.addEventListener("DOMContentLoaded", () => {
+        // 获取元素
+        
+      });
+    </script>
+  </body>
+</html>
