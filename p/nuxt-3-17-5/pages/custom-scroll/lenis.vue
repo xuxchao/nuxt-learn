@@ -1,78 +1,130 @@
 <template>
-    <div id="scrollContainer" class="overflow-hidden h-screen">
-        <!-- 可滚动内容容器 -->
-        <!-- 实际滚动内容 -->
-        <div id="scrollContent" class="scroll-content bg-light">
-            <!-- 头部 -->
-            <div class="bg-primary text-white p-5 relative">
-                <h2 class="text-xl font-bold">探索页面</h2>
-                <p class="text-sm opacity-90 mt-1">向上滑动查看更多内容</p>
-            </div>
-
-            <!-- 内容区域 -->
-            <div class="p-4">
-                <div v-for="(card, index) in cards" :key="index"
-                    class="bg-white rounded-xl shadow-md p-4 mb-4 transform transition hover:shadow-lg">
-                    <img :src="card.image" :alt="card.alt" class="w-full h-48 object-cover rounded-lg mb-3" />
-                    <h3 class="font-bold text-lg">{{ card.title }}</h3>
-                    <p class="text-gray-600 text-sm">{{ card.description }}</p>
-                </div>
-            </div>
-
-            <!-- 底部 -->
-            <div class="bg-dark text-white p-4 text-center text-sm">
-                <p>已经到底啦！</p>
-            </div>
+    <div class="">
+      <FixedContainer position="top">
+        <pre>{{ topScroll }}</pre>
+        <pre>{{ topChildrenSize }}</pre>
+        <pre>{{ bottomStyle }}</pre>
+      </FixedContainer>
+      <div ref="topContainerRef" class="p-3 max-h-screen overflow-y-auto">
+        <div ref="topChildrenRef" style="display: flex; gap: 8px; flex-direction: column;">
+          <Card1 :index="item" v-for="item in 10" />
+        </div>
+        <div class="h-[50vh]"></div>
+        <div class="h-[50vh]"></div>
+        <div ref="bottomContainerRef" class="h-screen fixed z-10 left-0 right-0 overflow-y-auto" :style="bottomStyle">
+          <BottomContainer />
         </div>
     </div>
-</template>
+    </div>
+  </template>
+  
+  <script setup lang="ts">
+  import BottomContainer from "./components/bottom/container.vue";
+  import FixedContainer from "./components/FixedContainer.vue";
+  import Card1 from "./components/top/card1.vue";
+  import { ref, onMounted } from 'vue';
+  import Lenis from 'lenis'
+import { useWindowSize } from '@vueuse/core';
+  
+  definePageMeta({
+    layout: "white",
+  });
 
-<script setup lang="ts">
-import Lenis from 'lenis'
+  const topContainerRef = ref<HTMLElement | null>(null)
+  const bottomContainerRef = ref<HTMLElement | null>(null)
+  const topChildrenRef = ref<HTMLElement | null>(null)
+  const windowSize = useWindowSize()
+  const topChildrenSize = useElementSize(topChildrenRef)
+  const topScroll = ref(0)
+  const bottomStyle = computed(() => {
+      let top =  windowSize.height.value === Infinity ? '50vh' : `${windowSize.height.value / 2}px`;
 
-// 卡片数据
-const cards = ref([
-    {
-        image: 'https://picsum.photos/300/200?random=1',
-        alt: '风景图片1',
-        title: '自然风光',
-        description: '探索大自然的美丽景色，感受大自然的魅力与力量。'
-    },
-    {
-        image: 'https://picsum.photos/300/200?random=2',
-        alt: '城市建筑图片',
-        title: '城市建筑',
-        description: '现代都市的建筑风格，展现人类文明的进步与创造力。'
-    },
-    {
-        image: 'https://picsum.photos/300/200?random=3',
-        alt: '海洋生物图片',
-        title: '海洋世界',
-        description: '神秘的海底世界，蕴藏着无数未知的生物与秘密。'
-    },
-    {
-        image: 'https://picsum.photos/300/200?random=4',
-        alt: '山脉图片',
-        title: '壮丽山脉',
-        description: '高耸入云的山脉，见证着地球亿万年的变迁。'
-    },
-    {
-        image: 'https://picsum.photos/300/200?random=5',
-        alt: '森林图片',
-        title: '茂密森林',
-        description: '郁郁葱葱的森林，是地球上最重要的生态系统之一。'
+      // 滚动到 top 有效内容的最底部
+      if(topScroll.value > topChildrenSize.height.value - windowSize.height.value / 2) {
+        // 修改 bottom 的位置向上移动
+        top = ((windowSize.height.value / 2) - (topScroll.value - (topChildrenSize.height.value - windowSize.height.value / 2 + 24))) + 'px'
+      }
+    return {
+        top
     }
-])
+  })
 
-onMounted(() => {
-    const lenis = new Lenis({
-        autoRaf: true,
-        wrapper: document.getElementById('scrollContainer') as HTMLElement
-    });
+  onMounted(() => {
 
-    // Listen for the scroll event and log the event data
-    lenis.on('scroll', (e) => {
-        console.log(e);
-    });
+    const scroll = {
+        time: 0,
+    }
+
+    document.documentElement.addEventListener('wheel', (e) => {
+        console.log(e.timeStamp - scroll.time)
+        scroll.time = e.timeStamp;
+    })
+
+    return;
+      if (!topContainerRef.value || !bottomContainerRef.value) return
+
+
+
+
+  const topLenis = new Lenis({
+    autoRaf: true,
+    // smoothWheel: false,
+    // duration: 0.5,
+    wrapper: topContainerRef.value,
+  })
+
+  const bottomLenis = new Lenis({
+    autoRaf: true,
+    smoothWheel: false,
+    // duration: 0.5,
+    wrapper: bottomContainerRef.value,
+  })
+  
+  // 初始状态：只有 top 是活跃的
+  bottomLenis.stop()
+
+  let isTransitioning = false // 防止重复切换
+
+  topLenis.on('scroll', (e) => {
+    if (isTransitioning) return
+    topLenis.options.smoothWheel = false;
+    topScroll.value = e.scroll
+    
+    if (e.progress === 1 && e.direction === 1) {
+      console.log('暂停 top，开始 bottom', e.progress, e.direction)
+      isTransitioning = true
+      
+      // 确保完全停止 top
+      topLenis.stop()
+      
+      bottomLenis.start()
+      isTransitioning = false
+    }
+  })
+
+  bottomLenis.on('scroll', (e) => {
+    if (isTransitioning) return
+    
+    if (e.progress === 0 && e.direction === -1) {
+      console.log('暂停 bottom，开始 top', e.direction)
+      isTransitioning = true
+      
+      // 确保完全停止 bottom
+      bottomLenis.stop()
+      // 延迟启动 top，确保 bottom 完全停止
+      setTimeout(() => {
+        topLenis.start()
+        isTransitioning = false
+      }, 50)
+    }
+  })
 })
-</script>
+  </script>
+  
+  
+  <style>
+  body {
+    background-color: #6D5F8D;
+    overflow: hidden;
+  }
+  </style>
