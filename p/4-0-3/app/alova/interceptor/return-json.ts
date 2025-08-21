@@ -1,4 +1,4 @@
-import type { InstanceOption } from "./pipe";
+import type { InstanceOption } from "../types";
 
 function returnJson({ extraOption }: InstanceOption<unknown>) {
   if (extraOption.canHandleResponse === false) return true;

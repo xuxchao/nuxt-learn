@@ -14,6 +14,10 @@ export const alovaInstance = createAlova({
     nuxtApp: useNuxtApp, // 必须指定useNuxtApp
   }),
   responded: {
+    /**
+     * pipe 拦截器 处理
+     * 下面的函数都会依次执行到，有额外的参数标识是否能够修改 response 数据
+     */
     onSuccess: pipe([
       // 是否直接返回 response
       returnAll,

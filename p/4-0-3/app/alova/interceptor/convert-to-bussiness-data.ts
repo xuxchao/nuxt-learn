@@ -1,9 +1,9 @@
-import type { InstanceOption } from "./pipe";
+import type { BusinessResponse, InstanceOption } from "../types";
 
 export function convertToBussinessData({
   response,
   extraOption,
-}: InstanceOption<any>) {
+}: InstanceOption<BusinessResponse<any>>) {
   if (extraOption.canHandleResponse === false) return true;
   return response.data;
 }

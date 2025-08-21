@@ -1,4 +1,4 @@
-import type { InstanceOption } from "./pipe";
+import type { InstanceOption } from "../types";
 
 export function convertToJsonData({
   response,

@@ -1,4 +1,4 @@
-import type { InstanceOption } from "./pipe";
+import type { InstanceOption } from "../types";
 
 export function returnAll({ method, extraOption }: InstanceOption<Response>) {
   if (extraOption.canHandleResponse === false) return true;
