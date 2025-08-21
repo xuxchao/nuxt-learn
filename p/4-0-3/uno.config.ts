@@ -1,13 +1,15 @@
-import presetAttributify from "@unocss/preset-attributify";
-import transformerDirectives from "@unocss/transformer-directives";
-import transformerVariantGroup from "@unocss/transformer-variant-group";
-
-import { defineConfig } from "unocss";
+import presetLegacyCompat from "@unocss/preset-legacy-compat";
+import {
+  defineConfig,
+  presetAttributify,
+  presetWind3,
+  transformerVariantGroup,
+} from "unocss";
 
 export default defineConfig({
   transformers: [
     // <div class="hover:(bg-gray-400 font-medium) font-(light mono)" />
-    transformerDirectives(),
+    // transformerDirectives(),
     /**
      * .custom-div {
      *  @apply text-center my-0 font-medium;
@@ -29,6 +31,11 @@ export default defineConfig({
      */
     presetAttributify({
       /* preset options */
+    }),
+    presetWind3(),
+    presetLegacyCompat({
+      commaStyleColorFunction: true,
+      legacyColorSpace: true,
     }),
   ],
 });
