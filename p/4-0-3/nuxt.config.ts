@@ -4,7 +4,8 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     "@unocss/nuxt", 
-    "nuxt-vite-legacy"
+    "nuxt-vite-legacy",
+    "motion-v/nuxt"
   ],
   legacy: {
     targets: ["chrome 49"],

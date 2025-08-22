@@ -1,10 +1,5 @@
 import presetLegacyCompat from "@unocss/preset-legacy-compat";
-import {
-  defineConfig,
-  presetAttributify,
-  presetWind3,
-  transformerVariantGroup,
-} from "unocss";
+import { defineConfig, presetAttributify, presetWind3 } from "unocss";
 
 export default defineConfig({
   transformers: [
@@ -15,7 +10,7 @@ export default defineConfig({
      *  @apply text-center my-0 font-medium;
      * }
      */
-    transformerVariantGroup(),
+    // transformerVariantGroup(),
   ],
   presets: [
     /**
@@ -29,9 +24,7 @@ export default defineConfig({
      *  Button
      * </button>
      */
-    presetAttributify({
-      /* preset options */
-    }),
+    presetAttributify(),
     presetLegacyCompat({
       /**
        * rgb(255 0 0) -> rgb(255, 0, 0)
