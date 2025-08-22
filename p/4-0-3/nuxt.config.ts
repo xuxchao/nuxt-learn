@@ -3,9 +3,10 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
   modules: [
-    "@unocss/nuxt", 
+    "@unocss/nuxt",
     "nuxt-vite-legacy",
-    "motion-v/nuxt"
+    "motion-v/nuxt",
+    "nuxt-swiper"
   ],
   legacy: {
     targets: ["chrome 49"],

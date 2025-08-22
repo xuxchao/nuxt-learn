@@ -1,5 +1,4 @@
 <script setup lang="tsx">
-/** @jsxImportSource vue */
 import { motion, useScroll, useSpring, useTransform } from 'motion-v'
 import { ref, defineComponent } from 'vue'
 
@@ -21,23 +20,23 @@ const Image = defineComponent({
         const y = useParallax(scrollYProgress, 300)
 
         return () => (
-            <section class= "img-container" >
-            <div ref={ targetRef }>
-                <img
-            src={ `/photos/cityscape/${props.id}.jpg` }
-        alt = "A London skyscraper"
-            />
-            </div>
-            < motion.h2
-        // Hide until scroll progress is measured
-        initial = {{ visibility: "hidden" }
+            <section class="img-container" >
+                <div ref={targetRef}>
+                    <img
+                        src={`/photos/cityscape/${props.id}.jpg`}
+                        alt="A London skyscraper"
+                    />
+                </div>
+                < motion.h2
+                    // Hide until scroll progress is measured
+                    initial={{ visibility: "hidden" }
+                    }
+                    animate={{ visibility: "visible" }}
+                    style={{ y }}
+                > {`#00${props.id}`}</motion.h2>
+            </section>
+        )
     }
-          animate={{ visibility: "visible" }}
-style = {{ y }}
-        > {`#00${props.id}`}</motion.h2>
-    </section>
-    )
-  }
 })
 const progress = useSpring(useScroll().scrollYProgress, {
     stiffness: 100,
