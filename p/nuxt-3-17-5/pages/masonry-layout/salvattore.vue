@@ -21,7 +21,7 @@
 <script setup lang="ts">
 import { usePagination, useRequest } from 'alova/client';
 import { alovaInstance } from '~/alova';
-import type { PostResult } from './type';
+import type { PostResult } from './(type)';
 
 // useHead({
 //     script: [
