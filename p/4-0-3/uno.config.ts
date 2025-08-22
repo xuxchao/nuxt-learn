@@ -1,7 +1,8 @@
 import presetAttributify from "@unocss/preset-attributify";
 import transformerDirectives from "@unocss/transformer-directives";
 import transformerVariantGroup from "@unocss/transformer-variant-group";
-
+import presetWind4 from '@unocss/preset-wind4'
+import presetLegacyCompat from '@unocss/preset-legacy-compat'
 import { defineConfig } from "unocss";
 
 export default defineConfig({
@@ -30,5 +31,19 @@ export default defineConfig({
     presetAttributify({
       /* preset options */
     }),
+    presetWind4({
+      preflights: { 
+        reset: true, 
+      } 
+    }),
+    presetLegacyCompat({
+      /**
+       * rgb(255 0 0) -> rgb(255, 0, 0)
+       * rgb(255 0 0 / 50%) -> rgba(255, 0, 0, 50%)
+       * hsl(0 100% 50% / 50%) -> hsla(0, 100%, 50%, 50%)
+       */
+      commaStyleColorFunction: true,
+      legacyColorSpace: true
+    })
   ],
 });

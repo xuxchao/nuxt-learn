@@ -5,7 +5,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "g": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
@@ -18,8 +18,11 @@
   "devDependencies": {
     "@unocss/nuxt": "^66.4.2",
     "@unocss/preset-attributify": "^66.4.2",
+    "@unocss/preset-legacy-compat": "^66.4.2",
+    "@unocss/preset-wind4": "^66.4.2",
     "@unocss/transformer-directives": "^66.4.2",
     "@unocss/transformer-variant-group": "^66.4.2",
+    "nuxt-vite-legacy": "^2.0.1",
     "unocss": "^66.4.2"
   }
 }
