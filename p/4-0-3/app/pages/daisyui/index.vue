@@ -2,18 +2,17 @@
     <div>
         <h1>daisyui</h1>
 
-        <button type="button" class="btn">Button</button>
+        <p>注意：兼容性存在一定的问题，例如 collapse 使用了 grid，这个需要谷歌浏览器 55+ 才能支持</p>
 
-        <div class="card bg-base-100 w-96 shadow-sm">
-            <figure>
-                <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Shoes" />
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title">Card Title</h2>
-                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-                <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Buy Now</button>
-                </div>
+        <button type="button" class="btn text-red-600 border-blue-500">Button</button>
+
+        <div class="collapse border border-red-400">
+            <input type="checkbox" />
+            <div class="collapse-title">How do I create an account?</div>
+            <div class="collapse-content">
+                Click the "Sign Up" button in the top right corner and follow the registration process.
+                Click the "Sign Up" button in the top right corner and follow the registration process.
+                Click the "Sign Up" button in the top right corner and follow the registration process.
             </div>
         </div>
 

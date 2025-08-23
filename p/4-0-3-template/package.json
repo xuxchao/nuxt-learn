@@ -8,37 +8,25 @@
     "g": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "volt": "volt-vue add --outdir app/components",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@primeuix/themes": "^1.2.1",
-    "@vant/nuxt": "1.0.7",
     "alova": "^3.3.4",
     "motion-v": "^1.7.0",
     "nuxt": "^4.0.3",
-    "primevue": "^4.3.6",
     "swiper": "^11.2.10",
-    "tailwind-merge": "^3.3.1",
-    "tailwindcss-primeui": "^0.6.1",
-    "vant": "^4.9.21",
     "vue": "^3.5.18",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
-    "@ameinhardt/unocss-preset-daisy": "^1.1.8",
     "@nuxt/eslint": "^1.9.0",
-    "@primevue/nuxt-module": "^4.3.6",
-    "@tailwindcss/vite": "^4.1.12",
     "@unocss/nuxt": "^66.4.2",
     "@unocss/preset-legacy-compat": "^66.4.2",
-    "daisyui": "^5.0.50",
     "eslint": "^9.34.0",
     "nuxt-vite-legacy": "^2.0.1",
     "tailwindcss": "^4.1.12",
     "typescript": "^5.9.2",
-    "unocss": "^66.4.2",
-    "volt-vue": "0.0.0-alpha.4"
+    "unocss": "^66.4.2"
   }
 }

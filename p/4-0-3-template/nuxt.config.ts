@@ -6,7 +6,6 @@ export default defineNuxtConfig({
     "@unocss/nuxt",
     "nuxt-vite-legacy", // "nuxt-swiper",
     "motion-v/nuxt",
-    "@vant/nuxt",
     "@nuxt/eslint",
   ],
   legacy: {
@@ -15,10 +14,13 @@ export default defineNuxtConfig({
     //   "mdn-polyfills/Element.prototype.getAttributeNames",
     // ],
   },
-  // css: ["~/assets/styles/daisyui.css"],
+  eslint: {
+    config: {
+      stylistic: true // <---
+    }
+  },
   css: [
     //
-    // "@unocss/reset/tailwind.css",
   ],
   vite: {
     build: {
