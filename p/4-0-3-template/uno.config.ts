@@ -1,11 +1,8 @@
-import { presetDaisy } from "@ameinhardt/unocss-preset-daisy";
 import presetLegacyCompat from "@unocss/preset-legacy-compat";
-import theme from "daisyui/functions/variables.js";
 import {
   defineConfig,
   presetAttributify,
   presetWind3,
-  transformerDirectives,
   transformerVariantGroup,
 } from "unocss";
 

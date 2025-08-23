@@ -2,7 +2,7 @@ import type { Method } from "alova";
 import type { ExtraOption, InstanceOption, InstanceResult } from "../types";
 
 export function pipe(
-  arr: ((option: InstanceOption<any>) => InstanceResult<any>)[],
+  arr: ((option: InstanceOption<Response>) => InstanceResult<Response>)[],
 ) {
   return async (response: Response, method: Method) => {
     const extraOption: ExtraOption = {

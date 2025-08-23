@@ -27,6 +27,7 @@ export default defineNuxtConfig({
         quotes: "double",
       },
     },
+    checker: true,
   },
   legacy: {
     targets: ["chrome 49"],
