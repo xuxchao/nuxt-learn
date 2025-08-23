@@ -6,5 +6,5 @@
 </template>
 
 <script lang="ts" setup>
-console.log("1111")
+console.log("1111");
 </script>

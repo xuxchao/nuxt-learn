@@ -1,46 +1,63 @@
 <script setup>
-import { ref } from 'vue'
-import { motion, AnimatePresence } from 'motion-v'
+import { ref } from "vue";
+import { motion, AnimatePresence } from "motion-v";
 
 const allIngredients = [
-    { icon: "🍅", label: "Tomato" },
-    { icon: "🥬", label: "Lettuce" },
-    { icon: "🧀", label: "Cheese" },
-    { icon: "🥕", label: "Carrot" },
-    { icon: "🍌", label: "Banana" },
-    { icon: "🫐", label: "Blueberries" },
-    { icon: "🥂", label: "Champers?" },
-]
+  { icon: "🍅", label: "Tomato" },
+  { icon: "🥬", label: "Lettuce" },
+  { icon: "🧀", label: "Cheese" },
+  { icon: "🥕", label: "Carrot" },
+  { icon: "🍌", label: "Banana" },
+  { icon: "🫐", label: "Blueberries" },
+  { icon: "🥂", label: "Champers?" },
+];
 
-const [tomato, lettuce, cheese] = allIngredients
-const tabs = [tomato, lettuce, cheese]
+const [tomato, lettuce, cheese] = allIngredients;
+const tabs = [tomato, lettuce, cheese];
 
-const selectedTab = ref(tabs[0])
+const selectedTab = ref(tabs[0]);
 </script>
 
 <template>
-    <h1>Motion</h1>
-    <div class="container">
-        <nav class="nav">
-            <ul class="tabs-container">
-                <motion.li v-for="item in tabs" :key="item.label" tag="li" class="tab" :initial="false" :animate="{
-                    backgroundColor: item.label === selectedTab.label ? '#eee' : '#eee0'
-                }" @click="selectedTab = item">
-                    {{ `${item.icon} ${item.label}` }}
-                    <motion.div v-if="item.label === selectedTab.label" class="underline" layout-id="underline" />
-                </motion.li>
-            </ul>
-        </nav>
-        <main class="icon-container">
-            <AnimatePresence mode="wait">
-                <motion.div :key="selectedTab ? selectedTab.label : 'empty'" :initial="{ y: 10, opacity: 0 }"
-                    :animate="{ y: 0, opacity: 1 }" :exit="{ y: -10, opacity: 0 }" :transition="{ duration: 0.2 }"
-                    class="icon">
-                    {{ selectedTab ? selectedTab.icon : "😋" }}
-                </motion.div>
-            </AnimatePresence>
-        </main>
-    </div>
+  <h1>Motion</h1>
+  <div class="container">
+    <nav class="nav">
+      <ul class="tabs-container">
+        <motion.li
+          v-for="item in tabs"
+          :key="item.label"
+          tag="li"
+          class="tab"
+          :initial="false"
+          :animate="{
+            backgroundColor: item.label === selectedTab.label ? '#eee' : '#eee0',
+          }"
+          @click="selectedTab = item"
+        >
+          {{ `${item.icon} ${item.label}` }}
+          <motion.div
+            v-if="item.label === selectedTab.label"
+            class="underline"
+            layout-id="underline"
+          />
+        </motion.li>
+      </ul>
+    </nav>
+    <main class="icon-container">
+      <AnimatePresence mode="wait">
+        <motion.div
+          :key="selectedTab ? selectedTab.label : 'empty'"
+          :initial="{ y: 10, opacity: 0 }"
+          :animate="{ y: 0, opacity: 1 }"
+          :exit="{ y: -10, opacity: 0 }"
+          :transition="{ duration: 0.2 }"
+          class="icon"
+        >
+          {{ selectedTab ? selectedTab.icon : "😋" }}
+        </motion.div>
+      </AnimatePresence>
+    </main>
+  </div>
 </template>
 
 <style>

@@ -1,55 +1,63 @@
 <script setup lang="tsx">
-import { motion, useScroll, useSpring, useTransform } from 'motion-v'
-import { ref, defineComponent } from 'vue'
+import { motion, useScroll, useSpring, useTransform } from "motion-v";
+import { ref, defineComponent } from "vue";
 
 function useParallax(value, distance) {
-    return useTransform(value, [0, 1], [-distance, distance])
+  return useTransform(value, [0, 1], [-distance, distance]);
 }
 
-
 const Image = defineComponent({
-    props: {
-        id: {
-            type: Number,
-            required: true
-        }
+  props: {
+    id: {
+      type: Number,
+      required: true,
     },
-    setup(props) {
-        const targetRef = ref(null)
-        const { scrollYProgress } = useScroll({ target: targetRef })
-        const y = useParallax(scrollYProgress, 300)
+  },
+  setup(props) {
+    const targetRef = ref(null);
+    const { scrollYProgress } = useScroll({ target: targetRef });
+    const y = useParallax(scrollYProgress, 300);
 
-        return () => (
-            <section class="img-container" >
-                <div ref={targetRef}>
-                    <img
-                        src={`/photos/cityscape/${props.id}.jpg`}
-                        alt="A London skyscraper"
-                    />
-                </div>
-                < motion.h2
-                    // Hide until scroll progress is measured
-                    initial={{ visibility: "hidden" }
-                    }
-                    animate={{ visibility: "visible" }}
-                    style={{ y }}
-                > {`#00${props.id}`}</motion.h2>
-            </section>
-        )
-    }
-})
+    return () => (
+      <section class="img-container">
+        <div ref={targetRef}>
+          <img
+            src={`/photos/cityscape/${props.id}.jpg`}
+            alt="A London skyscraper"
+          />
+        </div>
+        <motion.h2
+          // Hide until scroll progress is measured
+          initial={{ visibility: "hidden" }}
+          animate={{ visibility: "visible" }}
+          style={{ y }}
+        >
+          {" "}
+          {`#00${props.id}`}
+        </motion.h2>
+      </section>
+    );
+  },
+});
 const progress = useSpring(useScroll().scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-})
+  stiffness: 100,
+  damping: 30,
+  restDelta: 0.001,
+});
 </script>
 
 <template>
-    <div id="example">
-        <Image v-for="image in [1, 2, 3, 4, 5]" :key="image" :id="image" />
-        <motion.div class="progress" :style="{ scaleX: progress }" />
-    </div>
+  <div id="example">
+    <Image
+      v-for="image in [1, 2, 3, 4, 5]"
+      :id="image"
+      :key="image"
+    />
+    <motion.div
+      class="progress"
+      :style="{ scaleX: progress }"
+    />
+  </div>
 </template>
 
 <style>

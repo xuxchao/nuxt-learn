@@ -15,9 +15,9 @@ export type InstanceOption<T> = {
 
 export type InstanceResultBase<T> = boolean | Error | undefined | T;
 
-export type InstanceResult<T> =
-  | InstanceResultBase<T>
-  | Promise<InstanceResultBase<T>>;
+export type InstanceResult<T>
+  = | InstanceResultBase<T>
+    | Promise<InstanceResultBase<T>>;
 
 export type BusinessResponse<T> = {
   code: number;
