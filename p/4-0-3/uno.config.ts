@@ -5,18 +5,19 @@ import {
   presetAttributify,
   presetWind3,
   transformerDirectives,
+  transformerVariantGroup,
 } from "unocss";
 
 export default defineConfig({
   transformers: [
     // <div class="hover:(bg-gray-400 font-medium) font-(light mono)" />
-    transformerDirectives(),
+    // transformerDirectives(),
     /**
      * .custom-div {
      *  @apply text-center my-0 font-medium;
      * }
      */
-    // transformerVariantGroup(),
+    transformerVariantGroup(),
   ],
   presets: [
     /**
