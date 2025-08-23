@@ -3,12 +3,12 @@
 const containerRef = ref(null);
 const slides = ref(Array.from({ length: 10 }));
 
-const swiper = useSwiper(containerRef);
+// const swiper = useSwiper(containerRef);
 
 onMounted(() => {
   // Access Swiper instance
   // Read more about Swiper instance: https://swiperjs.com/swiper-api#methods--properties
-  console.log(swiper.instance);
+  // console.log(swiper.instance);
 });
 </script>
 
@@ -35,13 +35,13 @@ onMounted(() => {
     </ClientOnly>
 
     <!-- Go back one slide -->
-    <button @click="swiper.prev()">
+    <!-- <button @click="swiper.prev()">
       Prev
-    </button>
+    </button> -->
     <!-- Go forward one slide -->
-    <button @click="swiper.next()">
+    <!-- <button @click="swiper.next()">
       Next
-    </button>
+    </button> -->
   </div>
 </template>
 
