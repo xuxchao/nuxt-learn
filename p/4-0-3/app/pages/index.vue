@@ -6,7 +6,8 @@
     </div>
     <div>
       <button class="
-        lg:(bg-blue-400 text-yellow)
+        hover:(bg-blue-400 text-white)
+        lg:(bg-blue-400 text-(red 8) p-(x2 y2))
         md:(bg-red-400 text-white)
       " @click="num++">num++</button>
     </div>

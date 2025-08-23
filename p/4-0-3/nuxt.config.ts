@@ -1,3 +1,5 @@
+// import tailwindcss from "@tailwindcss/vite";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
@@ -6,7 +8,7 @@ export default defineNuxtConfig({
     "@unocss/nuxt",
     "nuxt-vite-legacy",
     "motion-v/nuxt",
-    "nuxt-swiper"
+    // "nuxt-swiper",
   ],
   legacy: {
     targets: ["chrome 49"],
@@ -14,13 +16,19 @@ export default defineNuxtConfig({
     //   "mdn-polyfills/Element.prototype.getAttributeNames",
     // ],
   },
+  // css: ["~/assets/styles/daisyui.css"],
+  css: [
+    "@unocss/reset/tailwind.css",
+    // "~/assets/styles/primeui.css",
+  ],
   vite: {
     build: {
       minify: false,
-    }
+    },
+    // plugins: [tailwindcss()],
   },
   sourcemap: {
     server: true,
     client: false,
-  }
+  },
 });

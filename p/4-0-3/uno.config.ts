@@ -1,10 +1,16 @@
+// import { presetDaisy } from "@ameinhardt/unocss-preset-daisy";
 import presetLegacyCompat from "@unocss/preset-legacy-compat";
-import { defineConfig, presetAttributify, presetWind3 } from "unocss";
+import {
+  defineConfig,
+  presetAttributify,
+  presetWind3,
+  transformerDirectives,
+} from "unocss";
 
 export default defineConfig({
   transformers: [
     // <div class="hover:(bg-gray-400 font-medium) font-(light mono)" />
-    // transformerDirectives(),
+    transformerDirectives(),
     /**
      * .custom-div {
      *  @apply text-center my-0 font-medium;
@@ -25,6 +31,7 @@ export default defineConfig({
      * </button>
      */
     presetAttributify(),
+    // presetDaisy(),
     presetLegacyCompat({
       /**
        * rgb(255 0 0) -> rgb(255, 0, 0)
@@ -32,7 +39,8 @@ export default defineConfig({
        * hsl(0 100% 50% / 50%) -> hsla(0, 100%, 50%, 50%)
        */
       commaStyleColorFunction: true,
-      // legacyColorSpace: true
+      // 会导致内存问题
+      // legacyColorSpace: true,
     }),
     presetWind3(),
   ],
