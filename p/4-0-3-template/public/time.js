@@ -1,0 +1,1 @@
+console.log("async start", window.performance.now(), window.performance.timeOrigin);
