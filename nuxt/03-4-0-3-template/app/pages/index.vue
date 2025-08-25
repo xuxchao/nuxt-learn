@@ -5,10 +5,7 @@
 </template>
 
 <script setup lang="ts">
-onErrorCaptured((error) => {
-  console.log(" index onErrorCaptured", error);
-  return false;
+onMounted(() => {
+  debugPagesHome("index.vue", "test", "test2", "test3", { a: 1 });
 });
-
-console.log("index.vue");
 </script>

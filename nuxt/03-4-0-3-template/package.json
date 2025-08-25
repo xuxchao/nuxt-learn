@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "alova": "^3.3.4",
+    "debug": "^4.4.1",
     "motion-v": "^1.7.0",
     "nuxt": "^4.0.3",
     "swiper": "^11.2.10",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.9.0",
+    "@types/debug": "^4.1.12",
     "@unocss/nuxt": "^66.4.2",
     "@unocss/preset-legacy-compat": "^66.4.2",
     "eslint": "^9.34.0",
