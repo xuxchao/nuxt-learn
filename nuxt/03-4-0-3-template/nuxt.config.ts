@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     "motion-v/nuxt",
     "@nuxt/eslint",
   ],
+  ssr: true,
   devtools: { enabled: true },
 
   app: {
