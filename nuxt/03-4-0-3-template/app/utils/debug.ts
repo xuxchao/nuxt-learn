@@ -1,4 +1,7 @@
-import { debug } from "debug";
+// 后续可以通过 npm 按照包别名的方式处理
+// yarn add debug-v2@npm:debug@4
+// import debug from "debug-v4";
+import debug from "debug";
 
 export const debugPages = debug("pages");
 
