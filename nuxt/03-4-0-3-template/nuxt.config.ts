@@ -6,13 +6,38 @@ export default defineNuxtConfig({
     "motion-v/nuxt",
     "@nuxt/eslint",
   ],
+  ssr: true,
   devtools: { enabled: true },
+
+  app: {
+    // pageTransition: { name: "slide-right", mode: "out-in" },
+
+  },
   css: [
     //
+    "@unocss/reset/tailwind.css",
+    "@/assets/styles/transition.css",
   ],
+  routeRules: {
+    "/": {
+      prerender: true,
+    },
+    "/isr": {
+      isr: 60,
+    },
+    "/swr": {
+      // swr: 60,
+      static: true,
+    },
+
+  },
   sourcemap: {
     server: true,
     client: false,
+  },
+
+  experimental: {
+    // viewTransition: true,
   },
   compatibilityDate: "2025-07-15",
   vite: {
