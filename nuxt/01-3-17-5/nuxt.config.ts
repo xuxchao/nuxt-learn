@@ -1,4 +1,6 @@
-import Aura from "@primevue/themes/aura";
+import { mergeJs } from "./js-merge";
+
+let num = 0
 
 export default defineNuxtConfig({
   modules: [
@@ -7,6 +9,19 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     // "@primevue/nuxt-module"
   ],
+  vite: {
+    build: {
+      rollupOptions: {
+        // output: {
+        //   manualChunks: (id, {getModuleIds,getModuleInfo }) => {
+        //     const info = getModuleInfo(id);
+        //     if (!info) return null;
+        //     return mergeJs(id, info)
+        //   }
+        // }
+      }
+    }
+  }
   //   primevue: {
   //     /* Configuration */
   //     options: {
