@@ -10,6 +10,7 @@
 <script setup lang="ts">
 import list from './components/list.vue'
 
+
 const arr = ref([1, 2])
 
 

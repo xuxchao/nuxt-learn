@@ -27,6 +27,8 @@ definePageMeta({
     layout: 'default',
 })
 
+const version = import.meta.env.VITE_CRS_VERSION
+
 useLifeCycleLog()
 
 const router = useRouter()
