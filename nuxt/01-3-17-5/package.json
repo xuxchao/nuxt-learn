@@ -38,6 +38,7 @@
     "@unocss/nuxt": "^66.4.2",
     "@unocss/preset-wind4": "^66.4.2",
     "@vant/nuxt": "^1.0.7",
+    "mta-nuxt-template": "^1.0.3",
     "sass-embedded": "^1.90.0",
     "unocss": "^66.4.2"
   }

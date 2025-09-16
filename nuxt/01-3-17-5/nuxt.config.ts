@@ -26,11 +26,14 @@ export default defineNuxtConfig({
       }
     }
   },
-  generate: {
-    routes: [
-      '/detail/1',
-      '/detail/2',
-    ]}
+  // nitro: {
+  //   prerender: {
+  //     routes: [
+  //       '/detail/1',
+  //       '/detail/2',
+  //     ]
+  //   }
+  // },
   //   primevue: {
   //     /* Configuration */
   //     options: {
